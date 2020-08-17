@@ -12,7 +12,7 @@ class Student
 
   end
 
-  def self.create_from_collection(students_array)
+  def self.create_from_collection(students_array)  #should iterate over the array of hashes and create a new individual student using each hash.
     students_array.each do |student_hash|  #uses the Scraper class to create new students with the correct name and location.
       Student.new(student_hash)
     end
