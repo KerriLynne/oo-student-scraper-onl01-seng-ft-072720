@@ -31,8 +31,8 @@ class Scraper
         elsif element.attr("href").include?("blog")
           student_profile[:blog] = element.attr("href")
         end
-      end    
-
+      end
+      student_profile[:profile_quote] = doc.css(".vitals-container .vitals-text-containter .profile-quote")
 
 
 
