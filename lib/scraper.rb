@@ -41,24 +41,24 @@ class Scraper
   def self.scrape_profile_page(profile_url)
     html = open(profile_url)
     doc = Nokogiri::HTML(html)
-    student_info = {}
+    student_profile = {}
 
       social = doc.css(".vitals-container .social-icon-container a")
       social.each do |element| #iterate through each of the social elements and assign the keys if the item exists
         if element.attr('href').include?("twitter")
-          student_info[:twitter] = element.attr('href')
+          student_profile[:twitter] = element.attr('href')
         elsif element.attr('href').include?("linkedin")
-          student_info[:linkedin] = element.attr('href')
+          student_profile[:linkedin] = element.attr('href')
         elsif element.attr('href').include?("github")
-          student_info[:github] = element.attr('href')
+          student_profile[:github] = element.attr('href')
         elsif element.attr('href').end_with?("com/")
-          student_info[:blog] = element.attr('href')
+          student_profile[:blog] = element.attr('href')
         end
       end
-      student_info[:profile_quote] = doc.css(".vitals-container .vitals-text-container .profile-quote").text
-      student_info[:bio] = doc.css(".bio-block.details-block .bio-content.content-holder .description-holder p").text
+      student_profile[:profile_quote] = doc.css(".vitals-container .vitals-text-container .profile-quote").text
+      student_profile[:bio] = doc.css(".bio-block.details-block .bio-content.content-holder .description-holder p").text
 
-  student_info
+  student_profile
   end
 
 
