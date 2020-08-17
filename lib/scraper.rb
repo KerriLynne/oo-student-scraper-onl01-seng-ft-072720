@@ -26,6 +26,15 @@ class Scraper
           student_profile[:twitter] = element.attr("href")
         elsif element.attr("href").include?("linkedin")
           student_profile[:linkedin] = element.attr("href")
+        elsif element.attr("href").include?("github")
+          student_profile[:github] = element.attr("href")
+        elsif element.attr("href").include?("blog")
+          student_profile[:blog] = element.attr("href")
+        elsif element.attr("href").include?("profile_quote")
+          student_profile[:profile_quote] = element.attr("href")
+
+
+
 
   end
 
