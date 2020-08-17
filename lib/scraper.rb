@@ -22,8 +22,10 @@ class Scraper
 
       social = doc.css(".vitals-container .social-icon-container a")
       social.each do |element|
-        if element.attr('href').include?("twitter")
-          student_profile[:twitter] = element.attr('href')
+        if element.attr("href").include?("twitter")
+          student_profile[:twitter] = element.attr("href")
+        elsif element.attr("href").include?("linkedin")
+          student_profile[:linkedin] = element.attr("href")
 
   end
 
