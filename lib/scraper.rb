@@ -16,7 +16,7 @@ class Scraper
   end
 
   def self.scrape_profile_page(profile_url)  #his is a class method that should take in an argument of a student's profile URL.
-    html = open(index_url)
+    html = open(profile_url)
     doc = Nokogiri::HTML(html)
     student_profile = {}   #The return value of this method should be a hash in which the key/value pairs describe an individual student
 
