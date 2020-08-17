@@ -8,7 +8,7 @@ class Student
     self.send("name=", student_hash[:name])  #takes in an argument of a hash and sets that new student's attributes using the key/value pairs of that hash
     self.send("location=", student_hash[:location])
     self.send("profile_url=", student_hash[:profile_url])
-    @@all << self
+    @@all << self  #  adds that new student to the Student class' collection of all existing students, stored in the `@@all` class variable.
 
   end
 
