@@ -30,7 +30,8 @@ class Scraper
           student_profile[:github] = element.attr("href")
         elsif element.attr("href").include?("blog")
           student_profile[:blog] = element.attr("href")
-        end  
+        end
+      end    
 
 
 
