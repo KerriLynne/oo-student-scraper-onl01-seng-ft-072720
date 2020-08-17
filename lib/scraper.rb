@@ -32,7 +32,8 @@ class Scraper
           student_profile[:blog] = element.attr("href")
         end
       end
-      student_profile[:profile_quote] = doc.css(".vitals-container .vitals-text-containter .profile-quote")
+      student_profile[:profile_quote] = doc.css(".vitals-container .vitals-text-containter .profile-quote").text
+      student_profile[:bio] = doc.css(".bio-block.detils-block .bio-content.content-holder .description-holder p").text
 
 
 
