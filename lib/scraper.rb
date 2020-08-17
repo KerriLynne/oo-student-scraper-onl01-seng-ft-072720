@@ -7,7 +7,7 @@ class Scraper
     html = open(index_url)  # use Nokogiri and Open-URI to access that page.
     doc = Nokogiri::HTML(html)
     student_info = doc.css(".student-card a")
-    student_info.collect do |element|
+    student_info.collect do |element|  #The return value of this method should be an array of hashes in which each hash represents a single student.
       {:name => element.css(".student-name").text,
         :location => element.css(".student-location").text,
         :profile_url => element.attr("href")
