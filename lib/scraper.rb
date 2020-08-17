@@ -20,7 +20,10 @@ class Scraper
     doc = Nokogiri::HTML(html)
     student_profile = {}   #The return value of this method should be a hash in which the key/value pairs describe an individual student
 
-      social = doc.css("vitals-container .social-icon-container a")
+      social = doc.css(".vitals-container .social-icon-container a")
+      social.each do |element|
+        if element.attr('href').include?("twitter")
+          student_profile[:twitter] = element.attr('href')
 
   end
 
