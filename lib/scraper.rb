@@ -15,29 +15,51 @@ class Scraper
     end
   end
 
-  def self.scrape_profile_page(profile_url)  #his is a class method that should take in an argument of a student's profile URL.
+  # def self.scrape_profile_page(profile_url)  #his is a class method that should take in an argument of a student's profile URL.
+  #   html = open(profile_url)
+  #   doc = Nokogiri::HTML(html)
+  #   student_profile = {}   #The return value of this method should be a hash in which the key/value pairs describe an individual student
+  #
+  #     social = doc.css(".vitals-container .social-icon-container a")
+  #     social.each do |element|
+  #       if element.attr("href").include?("twitter")
+  #         student_profile[:twitter] = element.attr("href")
+  #       elsif element.attr("href").include?("linkedin")
+  #         student_profile[:linkedin] = element.attr("href")
+  #       elsif element.attr("href").include?("github")
+  #         student_profile[:github] = element.attr("href")
+  #       elsif element.attr("href").include?("blog")
+  #         student_profile[:blog] = element.attr("href")
+  #       end
+  #     end
+  #     student_profile[:profile_quote] = doc.css(".vitals-container .vitals-text-containter .profile-quote").text
+  #     student_profile[:bio] = doc.css(".bio-block.detils-block .bio-content.content-holder .description-holder p").text
+  #
+  # student_profile
+  # end
+
+  def self.scrape_profile_page(profile_url)
     html = open(profile_url)
     doc = Nokogiri::HTML(html)
-    student_profile = {}   #The return value of this method should be a hash in which the key/value pairs describe an individual student
+    return_hash = {}
 
       social = doc.css(".vitals-container .social-icon-container a")
-      social.each do |element|
-        if element.attr("href").include?("twitter")
-          student_profile[:twitter] = element.attr("href")
-        elsif element.attr("href").include?("linkedin")
-          student_profile[:linkedin] = element.attr("href")
-        elsif element.attr("href").include?("github")
-          student_profile[:github] = element.attr("href")
-        elsif element.attr("href").include?("blog")
-          student_profile[:blog] = element.attr("href")
+      social.each do |element| #iterate through each of the social elements and assign the keys if the item exists
+        if element.attr('href').include?("twitter")
+          return_hash[:twitter] = element.attr('href')
+        elsif element.attr('href').include?("linkedin")
+          return_hash[:linkedin] = element.attr('href')
+        elsif element.attr('href').include?("github")
+          return_hash[:github] = element.attr('href')
+        elsif element.attr('href').end_with?("com/")
+          return_hash[:blog] = element.attr('href')
         end
       end
-      student_profile[:profile_quote] = doc.css(".vitals-container .vitals-text-containter .profile-quote").text
-      student_profile[:bio] = doc.css(".bio-block.detils-block .bio-content.content-holder .description-holder p").text
+      return_hash[:profile_quote] = doc.css(".vitals-container .vitals-text-container .profile-quote").text
+      return_hash[:bio] = doc.css(".bio-block.details-block .bio-content.content-holder .description-holder p").text
 
-  student_profile
+  return_hash
   end
-
 
 
 end
