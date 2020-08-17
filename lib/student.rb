@@ -27,7 +27,7 @@ class Student
     self.send("bio=", attributes_hash[:bio])
   end
 
-  def self.all
+  def self.all  #  returns the class variable @@all
     @@all
   end
 end
