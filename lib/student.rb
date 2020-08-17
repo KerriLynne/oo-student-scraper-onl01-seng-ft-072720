@@ -2,9 +2,9 @@ class Student
 
   attr_accessor :name, :location, :twitter, :linkedin, :github, :blog, :profile_quote, :bio, :profile_url
 
-  @@all = []
+  @@all = []  #You'll need to create this class variable and set it equal to an empty array at the top of your class.
 
-  def initialize(student_hash)
+  def initialize(student_hash)  #use meta-programming to assign the newly created student attributes and values per the key/value pairs of the hash. Use the #send method to achieve this. This method should also add the newly created student to the Student class' @@all array of all students.
     self.send("name=", student_hash[:name])  #takes in an argument of a hash and sets that new student's attributes using the key/value pairs of that hash
     self.send("location=", student_hash[:location])
     self.send("profile_url=", student_hash[:profile_url])
